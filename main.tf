@@ -22,3 +22,24 @@ resource "aws_subnet" "cisco_test_subnet" {
     Name = "cisco_test_subnet"
   }
 }
+
+resource "aws_internet_gateway" "gw" {
+  vpc_id = "${aws_vpc.default.id}"
+
+  tags = {
+    Name = "cisco_test_ig"
+  }
+}
+
+resource "aws_route_table" "r" {
+  vpc_id = "${aws_vpc.default.id}"
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${aws_internet_gateway.gw.id}"
+  }
+
+  tags = {
+    Name = "aws_route_table"
+  }
+}
