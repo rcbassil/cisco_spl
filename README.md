@@ -14,3 +14,5 @@
 	terraform apply -var 'key_name=YOUR_KEY_NAME'
 
  Wait a couple of minutes for the EC2 userdata to install nginx, and then type the ELB DNS Name from outputs in your browser and see CISCO SPL static page.
+
+ Remember to use http:// when accessing the ELB DNS name in your browser.
